@@ -44,6 +44,10 @@ let citySelect = document.querySelector("#city-select");
 citySelect.addEventListener("change", updateCity);
 function updateCity(event) {
   let cityName = event.target.value;
+  if (cityName === "current") {
+    cityName = moment.tz.guess();
+    citySelect.value = cityName;
+  }
   let cityNameElement = cityName.replace("_", " ").split("/")[1];
   let cityTime = moment().tz(cityName);
   let cityElement = document.querySelector(".cities");
