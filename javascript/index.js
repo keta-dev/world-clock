@@ -1,51 +1,59 @@
 function updateTime() {
 
-  // lagos Time
+  // Lagos Time
   let lagosEl = document.querySelector("#lagos");
+  if (lagosEl) {
   let lagosDate = document.querySelector(".date");
   let lagosTime = document.querySelector(".time");
 
-  let time = moment();
+  let time = moment.tz("Africa/Lagos");
 
   lagosDate.innerHTML = time.format("MMMM Do YYYY");
   lagosTime.innerHTML = time.format("h:mm:ss [<small>]A[</small>]");
 
   lagosDate.innerHTML = time.format("MMMM Do YYYY");
   lagosTime.innerHTML = time.format("h:mm:ss [<small>]A[</small>]");
-  lagosEl.style.backgroundColor = "#027547";
-  lagosEl.style.color = "#fff";
-  lagosEl.style.paddingLeft = "20px";
-  lagosEl.style.paddingRight = "20px";
-  lagosEl.style.borderRadius = "10px";
-
+}
   // Athens Time
   let athenElement = document.querySelector("#athen");
+  if (athenElement) {
   let athenDateElement = athenElement.querySelector(".date");
   let athenTimeElement = athenElement.querySelector(".time");
   let athensTime = moment().tz("Europe/Athens");
   athenDateElement.innerHTML = athensTime.format("MMMM Do YYYY");
   athenTimeElement.innerHTML = athensTime.format("h:mm:ss [<small>]A[</small>]");
-  athenElement.style.backgroundColor = "#181885";
-  athenElement.style.color = "#fff";
-  athenElement.style.paddingLeft = "20px";
-  athenElement.style.paddingRight = "20px";
-  athenElement.style.borderRadius = "10px";
+  }
 
-  // Paris Time
+  // Tokyo Time
   let tokyoEl = document.querySelector("#tokyo");
+  if (tokyoEl) {
   let tokyoDateEl = tokyoEl.querySelector(".date");
   let tokyoTimeEl = tokyoEl.querySelector(".time");
   let tokyoTime = moment().tz("Asia/Tokyo");
 
   tokyoDateEl.innerHTML = tokyoTime.format("MMMM	Do YYYY");
   tokyoTimeEl.innerHTML = tokyoTime.format("h:mm:ss [<small>]A[</small>]");
-  tokyoEl.style.backgroundColor = "#c5264b";
-  tokyoEl.style.color = "#fff";
-  tokyoEl.style.paddingLeft = "20px";
-  tokyoEl.style.paddingRight = "20px";
-  tokyoEl.style.borderRadius = "10px";
+  }
 }
 
 updateTime();
 // Update every second
 setInterval(updateTime, 1000);
+
+let citySelect = document.querySelector("#city-select");
+citySelect.addEventListener("change", updateCity);
+function updateCity(event) {
+  let cityName = event.target.value;
+  let cityNameElement = cityName.replace("_", " ").split("/")[1];
+  let cityTime = moment().tz(cityName);
+  let cityElement = document.querySelector(".cities");
+  
+  cityElement.innerHTML = `
+  <div class="city" id="${cityName}">
+      <div>
+        <h2>${cityNameElement}</h2>
+        <div class="date">${cityTime.format("MMMM	Do YYYY")}</div>
+      </div>
+      <div class="time">${cityTime.format("h:mm:ss")}<small>${cityTime.format("A")}</small></div>
+    </div>`
+}
