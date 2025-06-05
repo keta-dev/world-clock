@@ -5,13 +5,16 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>World Clock 🕰️</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.4/moment.min.js"></script>
+  <script
+    src="https://cdnjs.cloudflare.com/ajax/libs/moment-timezone/0.5.37/moment-timezone-with-data-1970-2030.min.js"></script>
   <link rel="stylesheet" href="style/style.css">
 </head>
 
 <body>
   <div class="container">
     <h1>World Clock</h1>
-    <p>Check the time in different cities around the world.</p>
+    <p class="text">Check the time in different cities around the world.</p>
     <select>
       <option value="">Select a city..</option>
       <option value="">Lagos</option>
@@ -19,15 +22,29 @@
       <option value="">Zanzibar</option>
     </select>
 
-    <div class="city">
-      <h2>Lagos 🇳🇬</h2>
-      <div class="date">June 5th 2025</div>
-      <div class="time">1:48:15 AM</div>
+    <!-- LAGOS -->
+    <div class="city" id="lagos">
+      <div>
+        <h2>Lagos 🇳🇬</h2>
+        <div class="date"></div>
+      </div>
+      <div class="time"></div>
     </div>
-    <div class="city">
-      <h2>Kumasi 🇱🇹</h2>
-      <div class="date">June 5th 2025</div>
-      <div class="time">1:48:15 AM</div>
+    <!-- ATHEN -->
+    <div class="city" id="athen">
+      <div>
+        <h2>Athen 🇬🇷</h2>
+        <div class="date"></div>
+      </div>
+      <div class="time"></div>
+    </div>
+    <!-- TOKYO -->
+    <div class="city" id="tokyo">
+      <div>
+        <h2>Tokyo 🇯🇵</h2>
+        <div class="date"></div>
+      </div>
+      <div class="time"></div>
     </div>
   </div>
   <footer>
